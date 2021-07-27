@@ -17,7 +17,7 @@ struct ContentView: View {
                     Text(self.students[$0])
                 }
             }
-             Text("Selected Student is \(students[selectedStudent])")
+             Text("Selected Student a is \(students[selectedStudent])")
         }
     }
 }
