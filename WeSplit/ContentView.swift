@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    let students = ["Ankit","Varun","Deepak","Sunil","Vivek"]
+    @State private var selectedStudent = 0
     var body: some View {
-        Text("Hello, world! uare awesome")
-            .padding()
+        VStack {
+            Picker("Select Student", selection: $selectedStudent){
+                ForEach(0 ..< students.count){
+                    Text(self.students[$0])
+                }
+            }
+             Text("Selected Student is \(students[selectedStudent])")
+        }
     }
 }
 
@@ -19,3 +27,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
