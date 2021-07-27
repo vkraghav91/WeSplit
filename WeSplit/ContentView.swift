@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let students = ["Ankit","Varun","Deepak","Sunil","Vivek"]
+    let students = ["Ankit","Varun","Deepak","Sunil","Vivek","Balram"]
     @State private var selectedStudent = 0
     var body: some View {
         VStack {
