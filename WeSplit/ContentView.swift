@@ -9,8 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var checkAmount = ""
+  //  @State private var numberOfPeople = 2
     @State private var numberOfPeople = 1
     @State private var tipPercentage = 2
+    var isZeroTip: Bool{
+                        if(Double(tipPercentages[tipPercentage]) == 0) {
+                            return false
+                        }
+                        else{
+                            return true
+                        }
+        
+                }
     let tipPercentages = [10, 15, 20, 25, 0]
     var totalValue:Double{
         let tipSelection = Double(tipPercentages[tipPercentage])
@@ -21,8 +31,8 @@ struct ContentView: View {
     }
     var totalPerPerson:Double {
         // calculate the total per person here
-//        let peopleCount = Double(numberOfPeople + 2)
-        let peopleCount = Double(numberOfPeople)
+        let peopleCount = Double(numberOfPeople + 2)
+//        let peopleCount = Double(numberOfPeople)
         return totalValue / peopleCount
     }
     
@@ -49,7 +59,13 @@ struct ContentView: View {
                     }.pickerStyle(SegmentedPickerStyle())
                 }
                 Section(header: Text("Total Amount")){
-                    Text("$ \(totalValue, specifier: "%.2f")")
+                    if isZeroTip{
+                            Text("$ \(totalValue, specifier: "%.2f")")
+                                .foregroundColor(.blue)}
+                    else{
+                            Text("$ \(totalValue, specifier: "%.2f")")
+                            .foregroundColor(.red)}
+                    
                 }
                 Section(header: Text("Amount Per Person")){
                     Text("$ \(totalPerPerson, specifier: "%.2f")")
